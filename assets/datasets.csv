@@ -1,0 +1,4 @@
+name,sexRatio,participants,description,images
+Dataset 1,50/50,100,"This is dataset one.","image1.jpg,image2.jpg,image3.jpg"
+Dataset 2,60/40,200,"This is dataset two.","image4.jpg,image5.jpg,image6.jpg"
+Dataset 3,70/30,300,"This is dataset three.","image7.jpg,image8.jpg,image9.jpg"
