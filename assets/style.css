@@ -1,15 +1,17 @@
-/* General Styles */
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f9;
+    color: #333;
 }
 
-/* Navbar */
+/* Navigation Bar */
 .navbar {
     display: flex;
     justify-content: space-between;
-    background-color: #333;
+    align-items: center;
+    background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
 }
@@ -18,46 +20,150 @@ body {
     color: white;
     text-decoration: none;
     margin: 0 10px;
+    font-weight: bold;
 }
 
-/* Header */
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* Header Section */
 .header {
     text-align: center;
-    background-color: #f44336;
+    padding: 50px 20px;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
     color: white;
-    padding: 20px 0;
 }
 
 .header h1 {
-    margin: 0;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
 }
 
 .header p {
-    margin-top: 10px;
+    font-size: 1.2rem;
 }
 
 /* Dataset Container */
 .dataset-container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
     padding: 20px;
 }
 
 .dataset-card {
+    background: white;
     border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 10px;
     padding: 20px;
+    width: 250px;
     text-align: center;
+}
+
+.dataset-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: #4CAF50;
 }
 
 .dataset-card button {
-    background-color: #007BFF;
+    background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
 }
 
+.dataset-card button:hover {
+    background-color: #45a049;
+}
+
+/* Footer */
 .footer {
     text-align: center;
-    padding: 10px 0;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    margin-top: 20px;
+}
+
+.dataset-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px;
+}
+
+.dataset-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 200px;
+}
+
+.dataset-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dataset-card h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.dataset-card button {
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+}
+
+.dataset-card button:hover {
+    background-color: #0056b3;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.modal-content {
+    width: 75%;
+    max-height: 80%;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
 }

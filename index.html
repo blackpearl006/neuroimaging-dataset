@@ -25,10 +25,20 @@
         <h1>NEUROIMAGING DATASETS</h1>
         <p>One place destination for all the neuroimaging datasets and its functionality</p>
     </header>
-
     <!-- Dataset Buttons -->
     <div id="app" class="dataset-container">
-        <div v-for="dataset in datasets" class="dataset-card">
+        <!-- Dataset Details Modal -->
+        <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
+            <div class="modal-content">
+                <span class="close-button" @click="closeModal">&times;</span>
+                <h2>{{ selectedDataset.name }}</h2>
+                <p><strong>Sex Ratio:</strong> {{ selectedDataset.sexRatio }}</p>
+                <p><strong>Participants:</strong> {{ selectedDataset.participants }}</p>
+                <p><strong>Description:</strong> {{ selectedDataset.description }}</p>
+                <p><strong>Images:</strong> {{ selectedDataset.images }}</p>
+            </div>
+        </div>
+        <div v-for="dataset in datasets" class="dataset-card" @mouseover="hoverCard(dataset)" @mouseleave="leaveCard(dataset)">
             <h3>{{ dataset.name }}</h3>
             <button @click="viewDetails(dataset)">View Details</button>
         </div>
