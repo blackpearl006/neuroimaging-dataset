@@ -13,10 +13,10 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <div class="nav-left">Help Center</div>
+        <div class="nav-left">Ninad Aithal</div>
         <div class="nav-right">
             <a href="#">Home</a>
-            <a href="#">Documentation</a>
+            <a href="#">Contact</a>
         </div>
     </nav>
 
@@ -30,17 +30,27 @@
         <!-- Dataset Details Modal -->
         <div v-if="showModal" class="modal-overlay" @click.self="closeModal">
             <div class="modal-content">
-                <span class="close-button" @click="closeModal">&times;</span>
-                <h2>{{ selectedDataset.name }}</h2>
-                <p><strong>Sex Ratio:</strong> {{ selectedDataset.sexRatio }}</p>
-                <p><strong>Participants:</strong> {{ selectedDataset.participants }}</p>
-                <p><strong>Description:</strong> {{ selectedDataset.description }}</p>
-                <p><strong>Images:</strong> {{ selectedDataset.images }}</p>
+            <span class="close-button" @click="closeModal">&times;</span>
+            <h2>{{ selectedDataset.name }}</h2>
+            <p><strong>CDR Global:</strong> {{ selectedDataset.cdrGlobal }}</p>
+            <p><strong>Subjects:</strong> {{ selectedDataset.subject }}</p>
+            <p><strong>Scans:</strong> {{ selectedDataset.scans }}</p>
+            <p><strong>Males:</strong> {{ selectedDataset.males }}</p>
+            <p><strong>Females:</strong> {{ selectedDataset.females }}</p>
+            <p><strong>Min Age:</strong> {{ selectedDataset.minAge }}</p>
+            <p><strong>Max Age:</strong> {{ selectedDataset.maxAge }}</p>
+            <p><strong>Mean Age:</strong> {{ selectedDataset.meanAge }}</p>
+            <p><strong>Standard Deviation:</strong> {{ selectedDataset.stdDev }}</p>
+            <p><strong>Median:</strong> {{ selectedDataset.median }}</p>
+            <p><strong>Q25:</strong> {{ selectedDataset.q25 }}</p>
+            <p><strong>Q75:</strong> {{ selectedDataset.q75 }}</p>
+            <p><strong>LINK:</strong> <a :href="selectedDataset.link" target="_blank">{{ selectedDataset.link }}</a></p>
             </div>
         </div>
         <div v-for="dataset in datasets" class="dataset-card" @mouseover="hoverCard(dataset)" @mouseleave="leaveCard(dataset)">
-            <h3>{{ dataset.name }}</h3>
-            <button @click="viewDetails(dataset)">View Details</button>
+            <div class="dataset-card-button" @click="viewDetails(dataset)" @mouseover="hoverCard(dataset)" @mouseleave="leaveCard(dataset)">
+                <h3>{{ dataset.name }}</h3>
+            </div>
         </div>
     </div>
 
