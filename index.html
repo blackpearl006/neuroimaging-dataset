@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neuroimaging Datasets</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-left">Help Center</div>
+        <div class="nav-right">
+            <a href="#">Home</a>
+            <a href="#">Documentation</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <header class="header">
+        <h1>NEUROIMAGING DATASETS</h1>
+        <p>One place destination for all the neuroimaging datasets and its functionality</p>
+    </header>
+
+    <!-- Dataset Buttons -->
+    <div id="app" class="dataset-container">
+        <div v-for="dataset in datasets" class="dataset-card">
+            <h3>{{ dataset.name }}</h3>
+            <button @click="viewDetails(dataset)">View Details</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        © 2025 Neuroimaging Datasets
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
