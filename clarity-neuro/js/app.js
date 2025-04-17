@@ -24,9 +24,10 @@ new Vue({
     methods: {
         async loadDatasets() {
             try {
-                const response = await fetch('/assets/NeuroDataHub.tsv');
+                const response = await fetch('./clarity-neuro/assets/NeuroDataHub.tsv');
                 const data = await response.text();
                 this.datasets = this.parseCSV(data);
+                console.log('dataset loded');
             } catch (error) {
                 console.error('Error loading datasets:', error);
             }
@@ -40,6 +41,9 @@ new Vue({
                     return null;
                 }
                 const [DATASET, GROUP, CDRGLOB, SUBJECT, SCANS, MALES, FEMALES, MINAGE, MAXAGE, MEANAGE, STD, Median, Q25, Q75, LINK, Publication, Description, Population, Datatype, Data] = columns;
+                console.log({
+                    DATASET, GROUP, CDRGLOB, SUBJECT, SCANS, MALES, FEMALES, MINAGE, MAXAGE, MEANAGE, STD, Median, Q25, Q75, LINK, Publication, Description, Population, Datatype, Data
+                });
                 return {
                     name: DATASET?.trim() || 'Unknown',
                     group: GROUP?.trim() || 'N/A',
@@ -65,6 +69,7 @@ new Vue({
                 };
 
             }).filter(dataset => dataset !== null);
+            console.log("TSV Data loaded:", data);
         },
         viewDetails(dataset) {
             this.selectedDataset = dataset;
