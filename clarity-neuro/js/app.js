@@ -24,7 +24,7 @@ new Vue({
     methods: {
         async loadDatasets() {
             try {
-                const response = await fetch('clarity-neuro/assets/DATASET_3T_count.csv');
+                const response = await fetch('/assets/DATASET_3T_count.csv');
                 const data = await response.text();
                 this.datasets = this.parseCSV(data);
             } catch (error) {
