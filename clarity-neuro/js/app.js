@@ -24,7 +24,7 @@ new Vue({
     methods: {
         async loadDatasets() {
             try {
-                const response = await fetch('/assets/NeuroDataHub.csv');
+                const response = await fetch('/assets/NeuroDataHub.tsv');
                 const data = await response.text();
                 this.datasets = this.parseCSV(data);
             } catch (error) {
@@ -34,14 +34,15 @@ new Vue({
         parseCSV(data) {
             const rows = data.split('\n').slice(1).filter(row => row.trim() !== '');
             return rows.map(row => {
-                const columns = row.split(',');
+                const columns = row.split('\t');
                 if (columns.length < 13) {
                     console.warn('Skipping malformed row:', row);
                     return null;
                 }
-                const [DATASET, CDRGLOB, SUBJECT, SCANS, MALES, FEMALES, MINAGE, MAXAGE, MEANAGE, STD, Median, Q25, Q75, LINK] = columns;
+                const [DATASET, GROUP, CDRGLOB, SUBJECT, SCANS, MALES, FEMALES, MINAGE, MAXAGE, MEANAGE, STD, Median, Q25, Q75, LINK, Publication, Description, Population, Datatype, Data] = columns;
                 return {
                     name: DATASET?.trim() || 'Unknown',
+                    group: GROUP?.trim() || 'N/A',
                     cdrGlobal: CDRGLOB?.trim() || 'N/A',
                     subject: SUBJECT?.trim() || 'N/A',
                     scans: SCANS?.trim() || 'N/A',
@@ -55,8 +56,14 @@ new Vue({
                     q25: parseFloat(Q25)?.toFixed(2) || 'N/A',
                     q75: parseFloat(Q75)?.toFixed(2) || 'N/A',
                     link: LINK?.trim() || 'N/A',
+                    publication: Publication?.trim() || 'N/A',
+                    description: Description?.trim() || 'N/A',
+                    population: Population?.trim() || 'N/A',
+                    datatype: Datatype?.trim() || 'N/A',
+                    data: Data?.trim() || 'N/A',
                     hovered: false
                 };
+
             }).filter(dataset => dataset !== null);
         },
         viewDetails(dataset) {
@@ -75,7 +82,8 @@ new Vue({
             return dataset.hovered
               ? 'clarity-neuro/assets/images/sample2.png'
               : 'clarity-neuro/assets/images/sample1.png';
-          }
+        },
+        
           
     }
 });
